@@ -123,18 +123,6 @@ bun run build
 | `bun run typecheck` | TypeScript check |
 | `bun run build` | Generate modules + Vite library build |
 
-### Publishing to npm (CI)
-
-Releases run manually via the **Release** GitHub Actions workflow. Add a repository secret `NPM_TOKEN` that can publish **without** a one-time password:
-
-1. Open [npm Access Tokens](https://www.npmjs.com/settings/~/tokens).
-2. Create either:
-   - **Classic token** → type **Automation** (not Publish), or
-   - **Granular Access Token** → **Bypass two-factor authentication** checked, **Packages: Read and write**, scoped to `infakt-sdk` if you prefer least privilege.
-3. Paste the token into GitHub: **Settings → Secrets and variables → Actions → `NPM_TOKEN`**.
-
-If the workflow fails with `EOTP`, the secret is almost always a Publish token or a granular token without 2FA bypass — create a new token as above and update the secret.
-
 ## License
 
 MIT
