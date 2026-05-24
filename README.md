@@ -1,5 +1,7 @@
 # infakt-sdk
 
+[![npm version](https://img.shields.io/npm/v/infakt-sdk)](https://www.npmjs.com/package/infakt-sdk)
+
 TypeScript SDK for the [inFakt.pl API](https://docs.infakt.pl/), generated from the official Postman collection.
 
 ## Installation
