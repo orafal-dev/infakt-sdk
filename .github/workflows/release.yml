@@ -1,4 +1,9 @@
-# Manual npm publish. Repository secret required: NPM_TOKEN (npmjs automation token).
+# Manual npm publish.
+#
+# Repository secret: NPM_TOKEN — must bypass 2FA or publish fails with EOTP:
+#   • Classic token: type "Automation" (not "Publish") at https://www.npmjs.com/settings/~/tokens
+#   • Granular token: enable "Bypass two-factor authentication" + Packages: Read and write
+#
 # Run from Actions → Release → Run workflow (choose branch, usually main).
 name: Release
 
@@ -60,6 +65,19 @@ jobs:
         with:
           node-version: "22"
           registry-url: https://registry.npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify npm token (publish without OTP)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "${NODE_AUTH_TOKEN}" ]; then
+            echo "::error::NPM_TOKEN secret is missing. Add it under Settings → Secrets → Actions."
+            exit 1
+          fi
+          npm whoami
+          npm publish --dry-run --access public
 
       - name: Configure git
         run: |
