@@ -33,7 +33,9 @@
     "typecheck": "tsc --noEmit -p tsconfig.check.json",
     "sync:postman": "bun scripts/sync-postman-collection.ts",
     "generate:modules": "bun scripts/generate-modules.ts",
-    "prebuild": "bun run generate:modules"
+    "prebuild": "bun run generate:modules",
+    "docs:dev": "npm run dev --prefix docs",
+    "docs:build": "npm run build --prefix docs"
   },
   "keywords": [
     "infakt",

@@ -91,6 +91,15 @@ await api.resource("clients").list({
 
 The API uses JSON. The SDK wraps create/update payloads in the correct singular key automatically (`client`, `invoice`, `product`, etc.). Pass a plain object to `create()` / `update()`; for full control, pass a raw JSON string as `body` to `client.request()`.
 
+## Documentation
+
+Full docs are in [`docs/`](./docs/) ([Fumadocs](https://www.fumadocs.dev/docs) + Next.js).
+
+```bash
+npm run docs:dev    # http://localhost:3000/docs
+npm run docs:build
+```
+
 ## Development
 
 Built with [Vite](https://vite.dev/) library mode (ESM + CJS). This project uses [Bun](https://bun.sh/) for installs, scripts, and running TypeScript tooling.

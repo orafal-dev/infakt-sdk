@@ -1,0 +1,46 @@
+---
+title: Usage
+description: REST resources, filtering, and JSON payloads
+---
+
+## Standard REST resources
+
+```ts
+const clients = await api.resource("clients").list({ limit: 20, offset: 0 });
+
+const client = await api.resource("clients").get("uuid-here");
+await api.resource("clients").create({ company_name: "Acme Sp. z o.o." });
+await api.resource("clients").update("uuid-here", { company_name: "New Name" });
+await api.resource("clients").delete("uuid-here");
+
+const invoices = await api.resource("invoices").list({ limit: 10 });
+const pdf = await api.resource("invoices").invoke("pdf", { id: "invoice-uuid" });
+```
+
+## Any endpoint from the Postman collection
+
+```ts
+await api.resource("products").list({ limit: 20 });
+await api.resource("bank_accounts").list();
+await api.resource("vat_rates").list();
+await api.resource("invoices").invoke("next_number", { query: { kind: "vat" } });
+await api.resource("async/invoices").invoke("create", { body: { /* invoice */ } });
+```
+
+Supported resources include `clients`, `invoices`, `products`, `bank_accounts`, `advance_invoices`, `corrective_invoices`, `documents/costs`, `ksef/integration`, and more.
+
+## Filtering and field selection
+
+```ts
+await api.resource("clients").list({
+  limit: 50,
+  offset: 0,
+  order: "company_name asc",
+  fields: "company_name,nip",
+  q: { nip_eq: "5252525252" },
+});
+```
+
+## JSON payloads
+
+The API uses JSON. The SDK wraps create/update payloads in the correct singular key automatically (`client`, `invoice`, `product`, etc.). For full control, pass a raw JSON string as `body` to `client.request()`.

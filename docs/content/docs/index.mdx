@@ -1,0 +1,28 @@
+---
+title: Introduction
+description: TypeScript SDK for the inFakt.pl API
+---
+
+TypeScript SDK for the [inFakt.pl API](https://docs.infakt.pl/), generated from the official Postman collection.
+
+## Installation
+
+```bash
+npm install infakt-sdk
+```
+
+## Quick start
+
+```ts
+import { InfaktClient, createInfaktModules } from "infakt-sdk";
+
+const client = new InfaktClient({
+  credentials: {
+    apiKey: process.env.INFAKT_API_KEY!,
+  },
+});
+
+const api = createInfaktModules(client);
+```
+
+See [Authentication](/docs/authentication) and [Usage](/docs/usage) for details.

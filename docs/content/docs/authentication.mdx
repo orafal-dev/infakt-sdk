@@ -1,0 +1,37 @@
+---
+title: Authentication
+description: API key and sandbox configuration
+---
+
+Generate an API key in inFakt: **Settings → API**. Pass it in the `X-inFakt-ApiKey` header ([official docs](https://docs.infakt.pl/)).
+
+```ts
+import { InfaktClient, createInfaktModules } from "infakt-sdk";
+
+const client = new InfaktClient({
+  credentials: {
+    apiKey: process.env.INFAKT_API_KEY!,
+  },
+});
+
+const api = createInfaktModules(client);
+```
+
+## Sandbox
+
+Use the sandbox base URL for testing:
+
+```ts
+import {
+  InfaktClient,
+  SANDBOX_BASE_URL,
+  createInfaktModules,
+} from "infakt-sdk";
+
+const client = new InfaktClient({
+  credentials: { apiKey: process.env.INFAKT_API_KEY! },
+  baseUrl: SANDBOX_BASE_URL,
+});
+```
+
+Register at [konto.sandbox-infakt.pl](https://konto.sandbox-infakt.pl/rejestracja) and generate a sandbox API key.
