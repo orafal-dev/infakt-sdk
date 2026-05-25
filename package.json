@@ -45,6 +45,14 @@
     "poland"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orafal-dev/infakt-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/orafal-dev/infakt-sdk/issues"
+  },
+  "homepage": "https://github.com/orafal-dev/infakt-sdk#readme",
   "engines": {
     "bun": ">=1.1.0"
   },
