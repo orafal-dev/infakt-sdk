@@ -34,8 +34,8 @@
     "sync:postman": "bun scripts/sync-postman-collection.ts",
     "generate:modules": "bun scripts/generate-modules.ts",
     "prebuild": "bun run generate:modules",
-    "docs:dev": "npm run dev --prefix docs",
-    "docs:build": "npm run build --prefix docs"
+    "docs:dev": "bun run --cwd docs dev",
+    "docs:build": "bun run --cwd docs build"
   },
   "keywords": [
     "infakt",
