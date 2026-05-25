@@ -1,4 +1,9 @@
+import {
+  MarkdownCopyButton,
+  ViewOptionsPopover,
+} from "@/components/ai/page-actions";
 import { getMDXComponents } from "@/components/mdx";
+import { getGitHubSourceUrl, getMarkdownUrl } from "@/lib/llm-urls";
 import { source } from "@/lib/source";
 import {
   DocsBody,
@@ -15,11 +20,18 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const markdownUrl = getMarkdownUrl(page.slugs);
+  const githubUrl = getGitHubSourceUrl(page.path);
+
   const MDX = page.data.body;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
+      <div className="flex flex-row gap-2 items-center border-b pt-2 pb-6">
+        <MarkdownCopyButton markdownUrl={markdownUrl} />
+        <ViewOptionsPopover markdownUrl={markdownUrl} githubUrl={githubUrl} />
+      </div>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
         <MDX

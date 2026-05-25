@@ -3,6 +3,7 @@
 @import "fumadocs-ui/css/preset.css";
 
 @source "../node_modules/fumadocs-ui/dist/**/*.js";
+@source "../components/**/*.{ts,tsx}";
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
