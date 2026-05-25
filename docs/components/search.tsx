@@ -20,9 +20,13 @@ const initOrama = () =>
     language: "english",
   });
 
+/** Must match GitHub Pages base path (NEXT_PUBLIC_BASE_PATH at build time). */
+const searchIndexUrl = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/search`;
+
 export default function DefaultSearchDialog(props: SharedProps) {
   const { search, setSearch, query } = useDocsSearch({
     type: "static",
+    from: searchIndexUrl,
     initOrama,
   });
 
