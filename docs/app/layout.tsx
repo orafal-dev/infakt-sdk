@@ -1,4 +1,4 @@
-import { RootProvider } from "fumadocs-ui/provider/next";
+import { Provider } from "@/components/provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { ReactNode } from "react";
@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen flex-col">
-        <RootProvider>{children}</RootProvider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

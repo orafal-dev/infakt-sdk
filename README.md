@@ -93,12 +93,14 @@ The API uses JSON. The SDK wraps create/update payloads in the correct singular 
 
 ## Documentation
 
-Full docs are in [`docs/`](./docs/) ([Fumadocs](https://www.fumadocs.dev/docs) + Next.js).
+Full docs are in [`docs/`](./docs/) ([Fumadocs](https://www.fumadocs.dev/docs) + Next.js). Published on GitHub Pages: **https://orafal-dev.github.io/infakt-sdk/docs/**
 
 ```bash
 npm run docs:dev    # http://localhost:3000/docs
-npm run docs:build
+npm run docs:build  # static export → docs/out/
 ```
+
+Pushes to `main` deploy docs via [`.github/workflows/docs-pages.yml`](./.github/workflows/docs-pages.yml). In the repo **Settings → Pages**, set source to **GitHub Actions** (once).
 
 ## Development
 

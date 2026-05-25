@@ -2,6 +2,7 @@ node_modules/
 dist/
 docs/node_modules/
 docs/.next/
+docs/out/
 .env
 *.log
 .DS_Store

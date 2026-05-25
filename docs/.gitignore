@@ -18,6 +18,9 @@
 /out/
 .source/
 
+# static export output (regenerated on build)
+out/
+
 # production
 /build
 

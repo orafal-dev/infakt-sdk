@@ -1,17 +1,27 @@
 # infakt-sdk documentation
 
-Next.js site powered by [Fumadocs](https://www.fumadocs.dev/docs).
+Next.js site powered by [Fumadocs](https://www.fumadocs.dev/docs), built as a **static export** for GitHub Pages.
+
+**Live:** https://orafal-dev.github.io/infakt-sdk/docs/
 
 ## Commands
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000 → redirects to /docs
-npm run build
+bun install
+bun run dev      # http://localhost:3000/docs
+bun run build    # writes static site to out/
 ```
 
-From the SDK root: `npm run docs:dev` / `npm run docs:build`.
+GitHub Pages build (from CI):
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/infakt-sdk bun run build
+```
 
 ## Content
 
-Edit MDX files in `content/docs/`. Navigation order is in `content/docs/meta.json`.
+Edit MDX in `content/docs/`. Sidebar order: `content/docs/meta.json`.
+
+## Deploy
+
+`.github/workflows/docs-pages.yml` runs on push to `main`. Enable **Settings → Pages → Build and deployment → GitHub Actions** once per repository.
